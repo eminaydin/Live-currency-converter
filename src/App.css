@@ -8,6 +8,9 @@
   background-color: #363a3e;
   width: 100vw !important;
 }
+.header > h1 {
+  color: white;
+}
 .calculator {
   display: flex !important;
   background-color: blue;
