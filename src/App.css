@@ -1,10 +1,8 @@
 #root {
-  height: 100vh;
+  height: inherit;
   background-color: rgba(54, 58, 62, 0.08);
 }
-.app {
-  width: 100vw !important;
-}
+
 .header {
   height: 400px;
   background-color: #363a3e;
@@ -28,15 +26,13 @@
   line-height: 47px;
 }
 .box-background {
-  display: flex !important;
+  display: flex;
   flex-wrap: wrap;
   background-color: #fff;
   height: 128px;
   width: 905px;
-  justify-content: space-between;
-  align-items: center !important;
-  position: absolute;
-  top: 46%;
+  align-items: center;
+  top: -4em;
   left: 7%;
   border-radius: 15px;
   box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.2);
@@ -53,12 +49,14 @@
   color: #fff !important;
 }
 .result-msg {
-  margin: 10% 0 0 10%;
+  margin: 1em 0 0 10em;
 }
 .conversion-history {
+  font-size: 12px;
+  line-height: 14px;
   position: absolute;
-  top: 55%;
-  right: 10%;
+  top: 45em;
+  right: 10em;
 }
 input {
   background-color: rgba(54, 58, 62, 0.08) !important;
@@ -70,4 +68,34 @@ input {
 .error-msg {
   width: 100%;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  #root {
+    height: initial;
+  }
+  .box-background {
+    width: 80%;
+    height: 80%;
+  }
+  .input {
+    width: 195px !important;
+  }
+  .fields {
+    justify-content: center;
+  }
+  .field:nth-child(n) {
+    padding: 5px;
+  }
+  .conversion-history {
+    top: 25em;
+    right: 4em;
+  }
+  .box-background {
+    top: -10em;
+  }
+  .result-msg {
+    margin: 0;
+    text-align: center;
+  }
 }

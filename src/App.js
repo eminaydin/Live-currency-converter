@@ -10,7 +10,9 @@ import HomePage from './components/HomePage';
 import { useState } from 'react';
 
 function App() {
+
   const [calculationHistory, setCalculationHistory] = useState([]);
+
   function getCalculations(val) {
     setCalculationHistory(val)
   }

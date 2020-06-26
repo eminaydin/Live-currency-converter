@@ -41,50 +41,49 @@ const HomePage = (props) => {
         props.getCalculations(value);
     }
     return (
-        <Container className="app">
-            <Container className="header">
+        <div className="app">
+            <div className="header">
                 <h1 className="headline">Convert currencies in real-time.</h1>
-
-
-                <Form className="box-background">
-                    <Form.Group style={{ margin: "auto" }} >
-                        <Form.Input
-                            required
-                            label='Amount'
-                            placeholder='Amount'
-                            value={amount}
-                            onChange={(e, { value }) => setAmount(value)}
-                            type="number"
-                        />
-                        <Form.Select
-                            required
-                            label="From"
-                            value={currencyFrom}
-                            onChange={(e, { value }) => setCurrencyFrom(value)}
-                            options={getOptions}
-                        />
-                        <Form.Select
-                            required
-                            label="To"
-                            value={currencyTo}
-                            onChange={(e, { value }) => setCurrencyTo(value)}
-                            options={getOptions}
-                        />
-                        <Form.Button
-                            className="btn-div"
-                            onClick={calculationHandler}>
-                            Convert
+            </div>
+            <Form className="box-background">
+                <Form.Group style={{ margin: "auto" }} >
+                    <Form.Input
+                        required
+                        label='Amount'
+                        placeholder='Amount'
+                        value={amount}
+                        onChange={(e, { value }) => setAmount(value)}
+                        type="number"
+                    />
+                    <Form.Select
+                        required
+                        label="From"
+                        value={currencyFrom}
+                        onChange={(e, { value }) => setCurrencyFrom(value)}
+                        options={getOptions}
+                    />
+                    <Form.Select
+                        required
+                        label="To"
+                        value={currencyTo}
+                        onChange={(e, { value }) => setCurrencyTo(value)}
+                        options={getOptions}
+                    />
+                    <Form.Button
+                        className="btn-div"
+                        onClick={calculationHandler}>
+                        Convert
                             </Form.Button>
-                    </Form.Group>
-                    <Form.Field className="error-msg">
-                        {showError ? <p>Error</p> : null}
-                    </Form.Field>
-                </Form>
-
-                <Link to="/result"> <p className="conversion-history">View conversion history</p>  </Link>
-            </Container>
+                </Form.Group>
+                <Form.Field className="error-msg">
+                    {showError ? <p>Error</p> : null}
+                </Form.Field>
+            </Form>
+            <Link to="/result">
+                <p className="conversion-history">View conversion history</p>
+            </Link>
             {calcDone && <ShowResult stateArray={stateArray} />}
-        </Container>
+        </div>
     );
 }
 

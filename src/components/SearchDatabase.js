@@ -5,6 +5,8 @@ const SearchDatabase = ({ calculationHistory }) => {
 
     return (
         <div>
+            <div className="hey">
+            </div>
             {calculationHistory.map(e => <p>{e.amount}</p>)}
         </div>
     );
