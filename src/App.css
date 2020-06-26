@@ -1,36 +1,73 @@
+#root {
+  height: 100vh;
+  background-color: rgba(54, 58, 62, 0.08);
+}
 .app {
-  height: 100vh !important;
   width: 100vw !important;
-  overflow: hidden;
 }
 .header {
   height: 400px;
   background-color: #363a3e;
   width: 100vw !important;
 }
-.header > h1 {
+
+.pickar-logo-white {
   color: white;
+  background-color: #363a3e;
+  margin: 0;
+  padding: 40px;
+  padding-left: 7%;
 }
-.calculator {
+.headline {
+  padding-left: 7%;
+  padding-top: 5%;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 47px;
+}
+.box-background {
   display: flex !important;
-  background-color: blue;
+  flex-wrap: wrap;
+  background-color: #fff;
   height: 128px;
   width: 905px;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center !important;
+  position: absolute;
+  top: 46%;
+  left: 7%;
+  border-radius: 15px;
+  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.2);
 }
-.input {
-  height: 40px;
-}
-.dropdown {
-  min-height: 40px !important;
-  height: 40px !important;
-  line-height: 0.5em !important;
-}
-.dropdown icon {
-  top: 0.7em;
+
+.btn-div {
+  align-self: flex-end;
 }
 .button {
   width: 117px;
   height: 40px;
+  border-radius: 8px !important;
+  background-color: #ff4f54 !important;
+  color: #fff !important;
+}
+.result-msg {
+  margin: 10% 0 0 10%;
+}
+.conversion-history {
+  position: absolute;
+  top: 55%;
+  right: 10%;
+}
+input {
+  background-color: rgba(54, 58, 62, 0.08) !important;
+}
+.selection {
+  background-color: rgba(54, 58, 62, 0.08) !important;
+}
+
+.error-msg {
+  width: 100%;
+  text-align: center;
 }

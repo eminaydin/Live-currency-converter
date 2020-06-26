@@ -1,9 +1,11 @@
 import React from 'react';
 
-const SearchDatabase = (props) => {
+const SearchDatabase = ({ calculationHistory }) => {
+    console.log(calculationHistory);
+
     return (
         <div>
-            hello
+            {calculationHistory.map(e => <p>{e.amount}</p>)}
         </div>
     );
 }
