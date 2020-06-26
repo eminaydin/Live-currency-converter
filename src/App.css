@@ -1,0 +1,33 @@
+.app {
+  height: 100vh !important;
+  width: 100vw !important;
+  overflow: hidden;
+}
+.header {
+  height: 400px;
+  background-color: #363a3e;
+  width: 100vw !important;
+}
+.calculator {
+  display: flex !important;
+  background-color: blue;
+  height: 128px;
+  width: 905px;
+  justify-content: space-evenly;
+  align-items: center !important;
+}
+.input {
+  height: 40px;
+}
+.dropdown {
+  min-height: 40px !important;
+  height: 40px !important;
+  line-height: 0.5em !important;
+}
+.dropdown icon {
+  top: 0.7em;
+}
+.button {
+  width: 117px;
+  height: 40px;
+}
