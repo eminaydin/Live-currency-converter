@@ -7,14 +7,20 @@ import {
   Route,
 } from "react-router-dom";
 import HomePage from './components/HomePage';
+import { useState } from 'react';
 
 function App() {
+  const [calculationHistory, setCalculationHistory] = useState([]);
+  function getCalculations(val) {
+    setCalculationHistory(val)
+  }
 
   return (
     <Router>
+      <h1 className="pickar-logo-white">pickar</h1>
       <Switch>
-        <Route path="/result" component={SearchDatabase} />
-        <Route path="/" exact component={HomePage} />
+        <Route path="/result" render={() => <SearchDatabase calculationHistory={calculationHistory} />} />
+        <Route path="/" exact render={() => <HomePage getCalculations={getCalculations} />} />
       </Switch>
     </Router>
   )
