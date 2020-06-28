@@ -1,0 +1,152 @@
+.header {
+  height: 400px;
+  background-color: #363a3e !important;
+}
+.headline {
+  padding-left: 7%;
+  padding-top: 5%;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 47px;
+}
+.box-background {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  height: 128px;
+  width: 70%;
+  align-items: center;
+  top: -4em;
+  left: 7%;
+  border-radius: 15px;
+  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.2);
+}
+input {
+  background-color: rgba(54, 58, 62, 0.08) !important;
+}
+.selection {
+  background-color: rgba(54, 58, 62, 0.08) !important;
+}
+.exchange {
+  margin-top: 1.5em !important;
+  color: #ff4f54;
+  cursor: pointer;
+}
+.btn-div {
+  align-self: flex-end;
+}
+.button {
+  width: 117px;
+  height: 40px;
+  border-radius: 8px !important;
+  background-color: #ff4f54 !important;
+  color: #fff !important;
+}
+.error-msg {
+  width: 100%;
+  text-align: center;
+}
+.form-content {
+  display: flex;
+}
+.conversion-history {
+  font-size: 12px;
+  line-height: 14px;
+  color: #363a3e;
+  margin-left: 15em;
+  margin-top: 2em;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  #root {
+    height: 100vh;
+  }
+  .app {
+    width: 100%;
+    height: 91vh;
+  }
+  .fields {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .input {
+    width: 195px !important;
+  }
+  .field:first-child {
+    padding: 10px;
+  }
+  .field:nth-child(n + 1) {
+    padding-top: 20px;
+  }
+  .field:nth-child(4) {
+    padding-top: 0;
+  }
+  .exchange {
+    margin-top: 0.5em !important;
+    width: 195px !important;
+    text-align: right !important;
+  }
+  .box-background {
+    width: 39%;
+    height: 100%;
+  }
+  button {
+    width: 195px !important;
+  }
+  .conversion-history {
+    top: 45em !important;
+    right: 2em !important;
+  }
+}
+@media (width: 768px) {
+  .app {
+    height: 88.5vh !important;
+  }
+  .box-background {
+    width: 50% !important;
+  }
+}
+
+@media (min-width: 200px) and (max-width: 768px) {
+  body {
+    height: 100%;
+  }
+  #root {
+    height: 100vh !important;
+  }
+  .box-background {
+    width: 80%;
+    height: 80%;
+    margin-bottom: -5em;
+    top: -10em;
+  }
+  .input {
+    width: 195px !important;
+  }
+  .fields {
+    justify-content: center;
+  }
+  .field:first-child {
+    padding: 10px;
+  }
+  .field:nth-child(n + 1) {
+    padding-top: 20px;
+  }
+  .field:nth-child(4) {
+    padding-top: 0;
+  }
+  .exchange {
+    margin-top: 0.5em !important;
+    width: 195px !important;
+    text-align: right !important;
+  }
+  button {
+    width: 195px !important;
+  }
+  .conversion-history {
+    margin-top: 20em !important;
+    margin-left: -10em;
+  }
+}

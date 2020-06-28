@@ -1,101 +1,43 @@
+body {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
 #root {
-  height: inherit;
+  height: 100vh;
+  width: 1280px;
+}
+.app {
   background-color: rgba(54, 58, 62, 0.08);
+  height: calc(100% - 154px);
+  width: 1280px;
+  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.2);
 }
-
-.header {
-  height: 400px;
-  background-color: #363a3e;
-  width: 100vw !important;
-}
-
 .pickar-logo-white {
   color: white;
   background-color: #363a3e;
   margin: 0;
   padding: 40px;
-  padding-left: 7%;
+  padding-left: 3em;
 }
-.headline {
-  padding-left: 7%;
-  padding-top: 5%;
-  color: #fff;
-  font-family: Roboto;
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 47px;
+@media (width: 768px) {
+  .app {
+    height: auto !important;
+  }
+  .pickar-logo-white {
+    padding-left: 2em !important;
+  }
 }
-.box-background {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #fff;
-  height: 128px;
-  width: 905px;
-  align-items: center;
-  top: -4em;
-  left: 7%;
-  border-radius: 15px;
-  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.2);
-}
-
-.btn-div {
-  align-self: flex-end;
-}
-.button {
-  width: 117px;
-  height: 40px;
-  border-radius: 8px !important;
-  background-color: #ff4f54 !important;
-  color: #fff !important;
-}
-.result-msg {
-  margin: 1em 0 0 10em;
-}
-.conversion-history {
-  font-size: 12px;
-  line-height: 14px;
-  position: absolute;
-  top: 45em;
-  right: 10em;
-}
-input {
-  background-color: rgba(54, 58, 62, 0.08) !important;
-}
-.selection {
-  background-color: rgba(54, 58, 62, 0.08) !important;
-}
-
-.error-msg {
-  width: 100%;
-  text-align: center;
-}
-
 @media (max-width: 768px) {
   #root {
-    height: initial;
+    width: 768px !important;
+    overflow: auto;
   }
-  .box-background {
-    width: 80%;
-    height: 80%;
+  .app {
+    width: unset;
+    height: auto;
   }
-  .input {
-    width: 195px !important;
-  }
-  .fields {
-    justify-content: center;
-  }
-  .field:nth-child(n) {
-    padding: 5px;
-  }
-  .conversion-history {
-    top: 25em;
-    right: 4em;
-  }
-  .box-background {
-    top: -10em;
-  }
-  .result-msg {
-    margin: 0;
-    text-align: center;
+  .pickar-logo-white {
+    padding-left: 1em;
   }
 }
