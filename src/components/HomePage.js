@@ -1,111 +1,107 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Form, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import ShowResult from './ShowResult';
 import "../styles/HomePage.css"
-
+import { currencyInitialState, ERROR_MESSAGES, selectOptions, baseUrl } from '../consts/Consts'
 
 const HomePage = (props) => {
-    const options = [
-        { key: 'EUR', value: 'EUR', text: 'EUR' },
-        { key: 'USD', value: 'USD', text: 'USD' },
-        { key: 'CHF', value: 'CHF', text: 'CHF' },
-    ];
-    const baseUrl = `https://api.exchangeratesapi.io/latest?base=`
-    const [currencyResult, setCurrencyResult] = useState({
-        amount: "1",
-        currencyFrom: "EUR",
-        currencyTo: "USD",
-        multipliedAmount: "",
-        date: ""
-    });
-
+    const [calculationInfo, setCalculationInfo] = useState(currencyInitialState);
+    const [calculationResult, setCalculationResult] = useState(null);
     const [currencyDatabase, setCurrencyDatabase] = useState([]);
-    const [hasError, setHasError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
-    const [currencyRate, setCurrencyRate] = useState("");
-    const { amount, currencyFrom, currencyTo, multipliedAmount, date } = currencyResult;
-    const formValidation = () => {
+    const { amount, currencyFrom, currencyTo } = calculationInfo;
 
-        if (currencyFrom === currencyTo) setErrorMessage("Equal currencies")
-        if (!amount) setErrorMessage("no number given")
-        if (amount.charAt[0] === "-") setErrorMessage("no minus numbers")
-        if (amount === "0") setErrorMessage("can't convert 0")
-        if (errorMessage) setHasError(true)
+    const formValidation = () => {
+        var err = ''
+        if (amount.charAt(0) === "-") err = ERROR_MESSAGES.minusAmount
+        if (currencyFrom === currencyTo) err = ERROR_MESSAGES.equalCurrency
+        if (!amount) err = ERROR_MESSAGES.noAmount
+        if (amount === "0") err = ERROR_MESSAGES.amountZero
+        setErrorMessage(err)
+        return err
     }
 
-    const calculationHandler = async () => {
-        formValidation()
 
-        if (hasError) {
+    const calculationHandler = async () => {
+        if (formValidation()) {
             return
         } else {
             const fetchData = await fetch(`${baseUrl}${currencyFrom}&symbols=${currencyTo}`);
             const response = await fetchData.json();
             const rate = Object.values(response.rates)[0]
-            setCurrencyRate(rate);
-            setCurrencyResult({
+            // create new object with necessary information
+            const newObj = {
+                ...calculationInfo,
                 amount,
                 currencyFrom,
                 currencyTo,
                 multipliedAmount: rate * amount,
                 date: Date.now()
-
-            })
-            setCurrencyDatabase([...currencyDatabase, currencyResult])
+            }
+            // Pass the object to calculation result in order to display it right away 
+            setCalculationResult(newObj)
+            // Pass the object to database 
+            setCurrencyDatabase([...currencyDatabase, newObj])
         }
     }
+
+    // Pass currency history to parent
     if (currencyDatabase) props.getCalculations(currencyDatabase);
+
+    // Handle switch icon
     const changeCurrency = () => {
-        setCurrencyResult({
-            ...currencyResult,
+        setCalculationInfo({
+            ...calculationInfo,
             currencyTo: currencyFrom,
             currencyFrom: currencyTo
         })
     }
 
     return (
-        <div className="app">
+        <div className="initial-page">
             <div className="header">
-                <h1 className="headline">Convert currencies in real-time.</h1>
+                <h1 className="headline">
+                    Convert currencies in real-time.
+                    </h1>
             </div>
             <div className="form-content">
 
                 <Form className="box-background">
                     <Form.Group style={{ margin: "auto" }} >
                         <Form.Input
-                            required
                             label='Amount'
                             placeholder='Amount'
                             value={amount}
-                            onChange={(e, { value }) => setCurrencyResult({
-                                ...currencyResult,
+                            onChange={(e, { value }) => setCalculationInfo({
+                                ...calculationInfo,
                                 amount: value
                             })}
                             type="number"
                         />
                         <Form.Select
-                            required
                             placeholder="From"
                             label="From"
                             value={currencyFrom}
-                            onChange={(e, { value }) => setCurrencyResult({
-                                ...currencyResult,
+                            onChange={(e, { value }) => setCalculationInfo({
+                                ...calculationInfo,
                                 currencyFrom: value
                             })}
-                            options={options}
+                            options={selectOptions}
                         />
-                        <Icon name="exchange" onClick={changeCurrency} size="large" />
+                        <Icon
+                            name="exchange"
+                            onClick={changeCurrency}
+                            size="large" />
                         <Form.Select
-                            required
                             placeholder="To"
                             label="To"
                             value={currencyTo}
-                            onChange={(e, { value }) => setCurrencyResult({
-                                ...currencyResult,
+                            onChange={(e, { value }) => setCalculationInfo({
+                                ...calculationInfo,
                                 currencyTo: value
                             })}
-                            options={options}
+                            options={selectOptions}
                         />
                         <Form.Button
                             className="btn-div"
@@ -113,15 +109,17 @@ const HomePage = (props) => {
                             Convert
                             </Form.Button>
                     </Form.Group>
-                    <Form.Field className="error-msg">
-                        {hasError ? <p>{errorMessage}</p> : null}
+                    <Form.Field
+                        className="error-msg">
+                        {errorMessage && <p>{errorMessage}</p>}
                     </Form.Field>
                 </Form>
-                <Link to="/result" className="conversion-history">
+                <Link to="/result"
+                    className="conversion-history">
                     <span>View conversion history {">"}</span>
                 </Link>
             </div>
-            {currencyRate && <ShowResult currencyResult={currencyResult} />}
+            {calculationResult && <ShowResult calculationResult={calculationResult} />}
         </div>
     );
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import "../styles/SearchDatabase.css"
 import Moment from 'react-moment';
+import { formattedAmount } from '../consts/Consts';
 
 const SearchDatabase = ({ calculationHistory }) => {
     return (
@@ -17,12 +18,10 @@ const SearchDatabase = ({ calculationHistory }) => {
                         <th>To</th>
                     </tr>
                     {calculationHistory.map(({ amount, currencyTo, currencyFrom, multipliedAmount, date }) => {
-                        const formattedAmount = new Intl.NumberFormat('de-DE').format(amount)
-                        const formattedMultipliedAmount = new Intl.NumberFormat('de-DE').format(multipliedAmount);
-                        return < tr >
+                        return < tr key={date}>
                             <td><Moment format="LL">{date}</Moment></td>
-                            <td>{formattedAmount} {currencyFrom}</td>
-                            <td>{formattedMultipliedAmount} {currencyTo}</td>
+                            <td>{formattedAmount(amount)} {currencyFrom}</td>
+                            <td>{formattedAmount(multipliedAmount)} {currencyTo}</td>
                         </tr>
                     })}
                 </table>

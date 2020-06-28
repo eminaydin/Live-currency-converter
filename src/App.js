@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './styles/App.css';
 import SearchDatabase from './components/SearchDatabase';
 import {
   BrowserRouter as Router,
@@ -11,8 +11,8 @@ import { useState } from 'react';
 import logo from "./pickar_logo_white.png";
 
 function App() {
-
   const [calculationHistory, setCalculationHistory] = useState([]);
+
 
   function getCalculations(val) {
     setCalculationHistory(val)
@@ -23,7 +23,7 @@ function App() {
     <Router>
 
       <div className="pickar-logo-white">
-        <img src={logo}></img>
+        <img src={logo} alt="logo"></img>
       </div>
       <Switch>
         <Route path="/result" render={() => <SearchDatabase calculationHistory={calculationHistory} />} />

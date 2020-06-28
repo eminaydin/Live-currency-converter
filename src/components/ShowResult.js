@@ -1,17 +1,14 @@
 import React from 'react';
 import "../styles/ShowResult.css"
-const ShowResult = ({ currencyResult }) => {
-    const { amount, currencyTo, currencyFrom, multipliedAmount } = currencyResult;
+import { formattedAmount } from '../consts/Consts';
 
-    const formattedAmount = new Intl.NumberFormat('de-DE').format(amount)
-    const formattedMultipliedAmount = new Intl.NumberFormat('de-DE').format(multipliedAmount)
+const ShowResult = ({ calculationResult }) => {
+    const { amount, currencyTo, currencyFrom, multipliedAmount } = calculationResult;
     return (
         <div className="result-msg">
-            <span>{formattedAmount + " " + currencyFrom} =</span>
-            <p style={{ fontSize: "40px" }}>  {formattedMultipliedAmount + " " + currencyTo}</p>
+            <span>{formattedAmount(amount) + " " + currencyFrom} =</span>
+            <p style={{ fontSize: "40px" }}>  {formattedAmount(multipliedAmount) + " " + currencyTo}</p>
         </div>
-
-
     )
 }
 
