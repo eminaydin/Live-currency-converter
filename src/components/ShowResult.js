@@ -1,19 +1,17 @@
 import React from 'react';
+import "../styles/ShowResult.css"
+const ShowResult = ({ currencyResult }) => {
+    const { amount, currencyTo, currencyFrom, multipliedAmount } = currencyResult;
 
-const ShowResult = ({ stateArray }) => {
+    const formattedAmount = new Intl.NumberFormat('de-DE').format(amount)
+    const formattedMultipliedAmount = new Intl.NumberFormat('de-DE').format(multipliedAmount)
+    return (
+        <div className="result-msg">
+            <span>{formattedAmount + " " + currencyFrom} =</span>
+            <p style={{ fontSize: "40px" }}>  {formattedMultipliedAmount + " " + currencyTo}</p>
+        </div>
 
-    return (<>
 
-        {stateArray.map(({ amount, currencyFrom, currencyTo, multipliedAmount }) => {
-            const newAmount = new Intl.NumberFormat('de-DE').format(amount)
-            const newMultipliedAmount = new Intl.NumberFormat('de-DE').format(multipliedAmount)
-            return (<div className="result-msg">
-                <span>{newAmount + " " + currencyFrom} =</span>
-                <p style={{ fontSize: "40px" }}>  {newMultipliedAmount + " " + currencyTo}</p>
-            </div>
-            )
-        })}
-    </>
     )
 }
 
