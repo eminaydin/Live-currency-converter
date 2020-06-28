@@ -1,4 +1,4 @@
-### The Project
+## The Project
 
 In this project, I have created a simple live currency converter by using React as a main tool. Simply, project consists of two pages. On initial page, user has a form to fill which has two select field for the currencies from and to, along with one input field for the amount and button to submit the form. Before submitting, simple validation will take place. There are some edge cases that I have created to check and if user succeed to pass through the validation, the result of the currency conversion will be displayed in the same page.
 
