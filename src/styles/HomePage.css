@@ -1,6 +1,12 @@
+.initial-page {
+  background-color: rgba(54, 58, 62, 0.08);
+  height: calc(100% - 114px);
+  width: 1280px;
+  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.2);
+}
 .header {
   height: 400px;
-  background-color: #363a3e !important;
+  background-color: #363a3e;
 }
 .headline {
   padding-left: 7%;
@@ -37,7 +43,7 @@ input {
 .btn-div {
   align-self: flex-end;
 }
-.button {
+button {
   width: 117px;
   height: 40px;
   border-radius: 8px !important;
@@ -60,12 +66,8 @@ input {
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  #root {
-    height: 100vh;
-  }
-  .app {
+  .initial-page {
     width: 100%;
-    height: 91vh;
   }
   .fields {
     flex-wrap: wrap;
@@ -101,26 +103,24 @@ input {
   }
 }
 @media (width: 768px) {
-  .app {
-    height: 88.5vh !important;
-  }
   .box-background {
     width: 50% !important;
   }
 }
 
 @media (min-width: 200px) and (max-width: 768px) {
-  body {
-    height: 100%;
-  }
-  #root {
-    height: 100vh !important;
+  .initial-page {
+    width: unset;
+    height: unset;
   }
   .box-background {
     width: 80%;
     height: 80%;
     margin-bottom: -5em;
     top: -10em;
+  }
+  .error-msg {
+    padding: 20px;
   }
   .input {
     width: 195px !important;
@@ -146,7 +146,7 @@ input {
     width: 195px !important;
   }
   .conversion-history {
-    margin-top: 20em !important;
+    margin-top: 25em !important;
     margin-left: -10em;
   }
 }

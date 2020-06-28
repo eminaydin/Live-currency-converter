@@ -1,6 +1,6 @@
 .history-page {
   background-color: #363a3e;
-  height: calc(100% - 116px);
+  height: calc(100% - 114px);
   overflow: auto;
   width: 100%;
 }
@@ -57,6 +57,7 @@ td:last-child {
     height: 100%;
     overflow: auto;
   }
+
   .back-btn {
     margin-left: 2em;
   }
