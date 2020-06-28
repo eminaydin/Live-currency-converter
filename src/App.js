@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import HomePage from './components/HomePage';
 import { useState } from 'react';
+import logo from "./pickar_logo_white.png";
 
 function App() {
 
@@ -15,11 +16,15 @@ function App() {
 
   function getCalculations(val) {
     setCalculationHistory(val)
+
   }
 
   return (
     <Router>
-      <h1 className="pickar-logo-white">pickar</h1>
+
+      <div className="pickar-logo-white">
+        <img src={logo}></img>
+      </div>
       <Switch>
         <Route path="/result" render={() => <SearchDatabase calculationHistory={calculationHistory} />} />
         <Route path="/" exact render={() => <HomePage getCalculations={getCalculations} />} />
